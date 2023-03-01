@@ -11,7 +11,7 @@ function draw() {
 
     point(x * 8 + 200, 360 + -x*x);
 
-    x++;
+    x += 0.2;
     
     // console.log(x);
 }
