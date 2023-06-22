@@ -4,7 +4,7 @@
   "main": "script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./node_modules/live-server/live-server.js --no-browser"
+    "start": "node ./node_modules/live-server/live-server.js --no-browser --port=8090"
   },
   "author": "",
   "license": "ISC",

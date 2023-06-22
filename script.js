@@ -1,17 +1,51 @@
-function setup() {
-    createCanvas(400, 400);
+const can = {
+  x: 400,
+  y: 400
+};
+
+const envs = {
+  fr: -0.1
 }
-let x = 0;
+
+function setup() {
+  createCanvas(can.x, can.y);
+}
+
+let ball = createBall(20, 20);
 function draw() {
-    // init part
-    // background(220);
-    frameRate(10);
-    line(20, 380, 380, 380);
-    line(20, 20, 20, 380);
+  background(220);
 
-    point(x * 8 + 200, 360 + -x*x);
+  drawBall(ball);
 
-    x += 0.2;
-    
-    // console.log(x);
+  applyGravity(ball);
+  // frameRate(3);
+}
+
+function createBall(x, y) {
+  return {
+    pX: x,
+    pY: y,
+    pYD: y,
+    a: 1,
+    v: 1
+  };
+}
+
+function applyGravity(ball) {
+  ball.pY += ball.v * ball.a;
+  if (ball.pY < 390) {
+    ball.v += ball.a + envs.fr;
+  } else {
+    ball.v += -ball.a + envs.fr;
+  }
+  if (ball.pY < 390) {
+    ball.pYD = ball.pY;
+  } else {
+    ball.pYD = 390 - (ball.pY - 390);
+  }
+  // console.log(ball.pY);
+}
+
+function drawBall(ball) {
+  ellipse(ball.pX, ball.pYD, 20);
 }
